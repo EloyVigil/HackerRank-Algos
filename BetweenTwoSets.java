@@ -10,10 +10,10 @@ public class BetweenTwoSets {
 
   public static int getTotalX(int[] a, int[] b) {
     // Find Least Common Multiple of all integers in array a
-    int lcm = Arrays.stream(a).reduce(Main::lcm).getAsInt();
+    int lcm = Arrays.stream(a).reduce(BetweenTwoSets::lcm).getAsInt();
 
     // Find Greatest Common Divisor of all integers in array b
-    int gcdB = Arrays.stream(b).reduce(Main::gcd).getAsInt();
+    int gcdB = Arrays.stream(b).reduce(BetweenTwoSets::gcd).getAsInt();
 
     int result = 0;
     for (int i = lcm; i <= gcdB; i += lcm) {
