@@ -9,4 +9,5 @@ def GradingStudents(grades):
             finalGrade.append(grade)
     return finalGrade
 
+
 print(GradingStudents([73, 67, 38, 33]))
