@@ -9,19 +9,17 @@ function migratoryBirds(arr) {
         birdsMap[birdType] = count + 1;
     }
 
-    let highestType = null;
+    let lowestType = Number.MAX_SAFE_INTEGER;
     let highestCount = 0;
     for (let birdType in birdsMap) {
         if (birdsMap.hasOwnProperty(birdType)) {
             let count = birdsMap[birdType];
-            if (count >= highestCount) {
+            if (count > highestCount || (count === highestCount && birdType < lowestType)) {
                 highestCount = count;
-                highestType = birdType;
+                lowestType = birdType;
             }
         }
     }
 
-    return highestType;
+    return lowestType;
 }
-
-console.log(migratoryBirds([1, 2, 5, 8, 8, 2, 6, 5, 2, 9]))
