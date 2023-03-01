@@ -1,30 +1,28 @@
 import java.util.*;
 
 public class MigratoryBirds {
-    public static int migratoryBirds(List<Integer> arr) {
+    public static int migratoryBirds(int[] arr) {
         Map<Integer, Integer> birdsMap = new HashMap<>();
-        for (Integer birdType : arr) {
-            Integer count = birdsMap.get(birdType);
-            if (count == null) {
-                count = 0;
+        Arrays.stream(arr).forEach(birdType -> birdsMap.put(birdType, birdsMap.getOrDefault(birdType, 0) + 1));
+
+        int lowestType = Integer.MAX_VALUE;
+        int highestCount = 0;
+        for (int birdType : birdsMap.keySet()) {
+            int count = birdsMap.get(birdType);
+            if (count > highestCount || (count == highestCount && birdType < lowestType)) {
+                highestCount = count;
+                lowestType = birdType;
             }
-            birdsMap.put(birdType, count + 1);
         }
 
-        Optional<Map.Entry<Integer, Integer>> maxEntry =
-            birdsMap.entrySet().stream()
-            .max(Map.Entry.comparingByValue());
-
-        if (maxEntry.isPresent()) {
-            return maxEntry.get().getKey();
-        } else {
-            throw new IllegalStateException("No birds found");
-        }
+        return lowestType;
     }
 
     public static void main(String[] args) {
-        List<Integer> arr = Arrays.asList(1, 2, 2, 3, 3, 3);
-        int result = migratoryBirds(arr);
-        System.out.println(result); // expected output: 3
+        int[] arr1 = {1, 2, 5, 8, 8, 2, 6, 5, 2, 9};
+        System.out.println(migratoryBirds(arr1)); // output: 2
+
+        int[] arr2 = {1, 2, 3, 4, 5, 4, 3, 2, 1, 3, 4};
+        System.out.println(migratoryBirds(arr2)); // output: 1
     }
 }
