@@ -23,3 +23,6 @@ function migratoryBirds(arr) {
 
     return lowestType;
 }
+
+console.log(migratoryBirds([1, 2, 5, 8, 8, 2, 6, 5, 2, 9]))
+console.log(migratoryBirds([1, 2, 3, 4, 5, 4, 3, 2, 1, 3, 4]))
