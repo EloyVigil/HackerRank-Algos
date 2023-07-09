@@ -37,8 +37,6 @@ public class ClimbingTheLeaderboard {
         testCase2.put("expected", Arrays.asList(6, 5, 4, 2, 1));
         testCases.add(testCase2);
 
-        // Add more test cases if needed
-
         for (int i = 0; i < testCases.size(); i++) {
             Map<String, List<Integer>> testCase = testCases.get(i);
             List<Integer> ranked = testCase.get("ranked");
